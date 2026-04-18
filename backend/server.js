@@ -12,7 +12,7 @@ const app = exp();
 
 // middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],  // Allow both ports
+  origin: [process.env.FRONTEND_URL, "http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],  // Allow both ports
   credentials: true                 // FIX: required for cookies to be sent cross-origin
 }));
 app.use(exp.json());
@@ -30,8 +30,9 @@ const connectDB = async () => {
     await mongoose.connect(process.env.DB_URL);
     console.log("DB connection success");
 
-    app.listen(process.env.PORT, () => {
-      console.log(`Server started on port ${process.env.PORT}`);
+    const port = process.env.PORT || 10000;
+    app.listen(port, () => {
+      console.log(`Server started on port ${port}`);
     });
   } catch (err) {
     console.log("Err in DB connection", err);
