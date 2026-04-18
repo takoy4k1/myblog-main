@@ -1,0 +1,71 @@
+### User Register
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+  "firstName": "mattew",
+  "lastName": "smith",
+  "email": "mattew.smith@mail.com",
+  "password": "matt@12345",
+  "ProfileImageUrl": "https://example.com/avatars/user.png"
+}
+
+### User Login
+POST http://localhost:4000/common-api/login
+Content-Type: application/json
+
+{
+  "email": "mattew.smith@mail.com",
+  "password": "matt@12345"
+}
+
+### User read all articles (Protected)
+GET http://localhost:4000/user-api/articles
+
+### Add comment to article
+PUT http://localhost:4000/user-api/articles
+Content-Type: application/json
+
+{
+  "user": "69ae86940c51954369c14279",
+  "articleId": "69ae8ead36c4d475e794e035",
+  "comment": "Great article!"
+}
+
+### Logout
+GET http://localhost:4000/common-api/logout
+
+### Test route
+GET http://localhost:4000/test
+
+### Block User (ADMIN)
+PUT http://localhost:4000/admin-api/block/6989e719480e079c33d3a529
+Content-Type: application/json
+
+{
+  "email": "chris@mail.com",
+  "password": "$2b$10$yWGGIEhrE.sj1UiZRWvQaOy1WX7wZ6JSF2hIkcV9cc/ptQClA6UDa",
+  "role": "USER",
+  "isActive": true
+}
+
+### Unblock User (ADMIN)
+PUT http://localhost:4000/admin-api/unblock/6989e719480e079c33d3a529
+Content-Type: application/json
+
+{
+  "email": "chris@mail.com",
+  "password": "$2b$10$yWGGIEhrE.sj1UiZRWvQaOy1WX7wZ6JSF2hIkcV9cc/ptQClA6UDa",
+  "role": "USER",
+  "isActive": true
+}
+
+### Change Password
+PUT http://localhost:4000/common-api/change-password
+Content-Type: application/json
+
+{
+  "userId": "6989e719480e079c33d3a529",
+  "currentPassword": "chris@12345",
+  "newPassword": "chris@24"
+}
