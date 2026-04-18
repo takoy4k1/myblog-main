@@ -3,10 +3,8 @@ import { register, authenticate } from "../services/authService.js";
 import { ArticleModel } from "../models/Articlemodel.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 import { upload } from "../config/multer.js";
-import { uploadToCloudinary
-
-  
- } from "../config/cloudinaryupload.js";
+import { uploadToCloudinary } from "../config/cloudinaryupload.js";
+import cloudinary from "../config/cloudinary.js";
 export const userRoute = exp.Router();
 
 //Register user
