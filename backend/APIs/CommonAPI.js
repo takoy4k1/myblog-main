@@ -14,8 +14,8 @@ commonRouter.post('/login', async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
     });
 
     res.status(200).json({ message: "login success", payload: user });
@@ -33,8 +33,8 @@ commonRouter.post('/login', async (req, res) => {
 commonRouter.get('/logout', async (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
-    secure: false,
-    sameSite: "lax"
+    secure: true,
+    sameSite: "none"
   });
   res.status(200).json({ message: "Logged out successfully" });
 })
@@ -70,10 +70,11 @@ commonRouter.put('/change-password', verifyToken("ADMIN", "AUTHOR", "USER"), asy
   } catch (err) {
     res.status(500).json({ message: "Something went wrong" });
   }
-   commonRouter.get("/check-auth",verifyToken("USER","AUTHOR","ADMIN"),(req,res))
- res.status(200).json({
-  message:"authenticated",
-  payload:req.user
- });
+    commonRouter.get("/check-auth", verifyToken("USER", "AUTHOR", "ADMIN"), (req, res) => {
+        res.status(200).json({
+            message: "authenticated",
+            payload: req.user
+        });
+    });
 
 });
