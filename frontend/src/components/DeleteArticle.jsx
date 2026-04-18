@@ -19,7 +19,7 @@ function DeleteArticle() {
   const handleDelete = async () => {
     try {
       let res = await axios.delete(
-        `http://localhost:4000/author-api/articles/${article._id}`,
+        `${import.meta.env.VITE_API_URL}/author-api/articles/${article._id}`,
         { withCredentials: true }
       );
 

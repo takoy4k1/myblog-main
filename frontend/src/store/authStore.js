@@ -15,7 +15,7 @@ export const useAuth = create((set) => ({
       set({ loading: true, error: null });
 
       let res = await axios.post(
-        "http://localhost:4000/common-api/login",
+        import.meta.env.VITE_API_URL + "/common-api/login",
         userCredObj,
         { withCredentials: true }
       );
@@ -55,7 +55,7 @@ export const useAuth = create((set) => ({
 
       set({ loading: true, error: null });
 
-      await axios.get("http://localhost:4000/common-api/logout", { withCredentials: true });
+      await axios.get(import.meta.env.VITE_API_URL + "/common-api/logout", { withCredentials: true });
 
       set({
         loading: false,

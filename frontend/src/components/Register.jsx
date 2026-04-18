@@ -36,7 +36,7 @@ function Register() {
 
       if(role === "USER"){
         let resObj = await axios.post(
-          "http://localhost:4000/user-api/users",
+          import.meta.env.VITE_API_URL + "/user-api/users",
           formData
         );
 
@@ -48,7 +48,7 @@ function Register() {
 
       if(role === "AUTHOR"){
         let resObj = await axios.post(
-          "http://localhost:4000/author-api/users",
+          import.meta.env.VITE_API_URL + "/author-api/users",
           formData
         );
 

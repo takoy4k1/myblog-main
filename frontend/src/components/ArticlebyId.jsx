@@ -22,7 +22,7 @@ function ArticleById() {
     const fetchArticle = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/user-api/articles/${articleId}`,
+          `${import.meta.env.VITE_API_URL}/user-api/articles/${articleId}`,
           { withCredentials: true }
         );
         setArticle(res.data.payload);

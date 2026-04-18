@@ -17,7 +17,7 @@ function AuthorDashboard() {
     setLoading(true);
     try {
       // Fetches only THIS author's articles (protected route, identity from cookie/session)
-      const res = await axios.get("http://localhost:4000/author-api/articles", {
+      const res = await axios.get(import.meta.env.VITE_API_URL + "/author-api/articles", {
         withCredentials: true,
       });
       setArticles(res.data.payload);
